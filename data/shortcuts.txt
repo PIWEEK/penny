@@ -1,0 +1,33 @@
+How can I align items to the bottom in Penpot?
+Use the "Align bottom" shortcut by pressing Alt+S on Linux and Windows, or ⌥S on macOS.
+How can I align items horizontally to the center in Penpot?
+Use the "Align center horizontally" shortcut by pressing Alt+H on Linux and Windows, or ⌥H on macOS.
+How can I align items vertically to the center in Penpot?
+Use the "Align center vertically" shortcut by pressing Alt+V on Linux and Windows, or ⌥V on macOS.
+How can I align items to the left in Penpot?
+Use the "Align left" shortcut by pressing Alt+A on Linux and Windows, or ⌥A on macOS.
+How can I align items to the right in Penpot?
+Use the "Align right" shortcut by pressing Alt+D on Linux and Windows, or ⌥D on macOS.
+How can I align items to the top in Penpot?
+Use the "Align top" shortcut by pressing Alt+W on Linux and Windows, or ⌥W on macOS.
+How can I distribute items horizontally in Penpot?
+Use the "Distribute horizontally" shortcut by pressing Ctrl+Shift+Alt+H on Linux and Windows, or ⌘⇧⌥H on macOS.
+How can I distribute items vertically in Penpot?
+Use the "Distribute vertically" shortcut by pressing Ctrl+Shift+Alt+V on Linux and Windows, or ⌘⇧⌥V on macOS.
+How can I cancel an action in Penpot?
+Use the "Cancel" shortcut by pressing Esc on both Linux and Windows, and macOS.
+How can I clear the undo history in Penpot?
+Use the "Clear undo" shortcut by pressing Ctrl+Q on Linux and Windows, or Alt+Q on macOS.
+How can I copy selected items in Penpot?
+Use the "Copy" shortcut by pressing Ctrl+C on Linux and Windows, or ⌘C on macOS.
+How can I cut selected items in Penpot?
+Use the "Cut" shortcut by pressing Ctrl+X on Linux and Windows, or ⌘X on macOS.
+How can I delete selected items in Penpot?
+Use the "Delete" shortcut by pressing Supr or Delete on Linux and Windows, or ⌫ on macOS.
+How can I duplicate selected items in Penpot?
+Use the "Duplicate" shortcut by pressing Ctrl+D on Linux and Windows, or ⌘D on macOS.
+How can I paste copied items in Penpot?
+Use the "Paste" shortcut by pressing Ctrl+V on Linux and Windows, or ⌘V on macOS.
+How can I redo an action in Penpot?
+Use the "Redo" shortcut by pressing Ctrl+Shift+Z on Linux and Windows, or ⌘⇧Z on macOS.
+
