@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Simple Chat</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="message_input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script>
+      var socket = io();
+      $('form').submit(function(e) {
+        e.preventDefault();
+        var msg = $('#message_input').val();
+        socket.emit('message', msg);
+        $('#messages').append($('<li>').text(msg));
+        $('#message_input').val('');
+        return false;
+      });
+      socket.on('response', function(msg) {
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
+  </body>
+</html>
