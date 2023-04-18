@@ -1,26 +1,15 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
-from chatterbot.comparisons import jaccard_similarity
-from chatterbot.comparisons import levenshtein_distance
-
-CORPUS_FAQ = "data/faq.txt"
-CORPUS_SHORTCUTS = "data/shortcuts.txt"
-
-
-def file_read(fname):
-    content_array = []
-    with open(fname) as f:
-        # Content_list is the list that contains the read lines.
-        for line in f:
-            content_array.append(line)
-        return content_array
+#from chatterbot.comparisons import jaccard_similarity
+#from chatterbot.comparisons import levenshtein_distance
+from data import faq, shortcuts
 
 
 chatbot = ChatBot(
     'Penny',
     read_only=True,
     preprocessors=['chatterbot.preprocessors.clean_whitespace'],
-    statement_comparison_function=jaccard_similarity, #levenshtein_distance
+    #statement_comparison_function=jaccard_similarity, #levenshtein_distance
     storage_adapter='chatterbot.storage.SQLStorageAdapter',
     logic_adapters=[
         {
@@ -35,8 +24,8 @@ chatbot = ChatBot(
 
 trainer = ListTrainer(chatbot)
 
-trainer.train(file_read(CORPUS_FAQ))
-#trainer.train(file_read(CORPUS_SHORTCUTS))
+trainer.train(faq)
+trainer.train(shortcuts)
 
 
 exit_conditions = (":q", "quit", "exit")
