@@ -2,26 +2,43 @@
 <html>
   <head>
     <title>Simple Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="message_input" autocomplete="off" /><button>Send</button>
-    </form>
+    <main class="conversation-main">
+      <div class="conversation">
+        <p class="greeting">Hello, my name is Penny, the Penpot chat bot, How can I help you?</p>
+        <ul id="messages"></ul>
+      </div>
+      <form class="question-form" action="">
+        <input id="message_input" autocomplete="off" placeholder="Write your question" />
+        <button class="send-btn">Send</button>
+      </form>
+    </main>
+
     <script>
       var socket = io();
       $('form').submit(function(e) {
         e.preventDefault();
         var msg = $('#message_input').val();
         socket.emit('message', msg);
-        $('#messages').append($('<li>').text(msg));
+        $('#messages')
+        .append($('<li>')
+          .addClass("conversation-line")
+          .text(msg));
         $('#message_input').val('');
         return false;
       });
       socket.on('response', function(msg) {
-        $('#messages').append($('<li>').text(msg));
+        $('#messages')
+        .append($('<li>')
+          .addClass("conversation-line")
+          .text(msg));
       });
     </script>
   </body>

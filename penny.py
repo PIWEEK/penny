@@ -48,9 +48,10 @@ def index():
 def handle_message(message):
     print('received message: ' + message)
     response = str(chatbot.get_response(message))
-    emit('response', '[P]: ' + response, broadcast=True)
+    emit('response', '[Penny]: ' + response, broadcast=True)
 
 def main(argv):
+    
     print (argv)
     if len(argv) == 1 and argv[0] == 'train':
         train_chatbot(chatbot)
