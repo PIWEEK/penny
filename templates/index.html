@@ -1,44 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Simple Chat</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <main class="conversation-main">
+      <div class="presentation">
+        <img
+          class="logo-image"
+          src="{{ url_for('static', filename='/images/penny-logo.jpeg') }}"
+          alt="Penny logo, is a Penpot logo with eyes and eyebrows. Penpot logo is a pencil pot with three pencils with the point pointing up"
+        />
+        <p class="greeting">
+          Hello, my name is Penny, the Penpot chat bot, How can I help you?
+        </p>
+      </div>
       <div class="conversation">
-        <p class="greeting">Hello, my name is Penny, the Penpot chat bot, How can I help you?</p>
         <ul id="messages"></ul>
       </div>
+
       <form class="question-form" action="">
-        <input id="message_input" autocomplete="off" placeholder="Write your question" />
+        <input
+          id="message_input"
+          autocomplete="off"
+          placeholder="Write your question"
+        />
         <button class="send-btn">Send</button>
       </form>
     </main>
 
     <script>
       var socket = io();
-      $('form').submit(function(e) {
+      $("form").submit(function (e) {
         e.preventDefault();
-        var msg = $('#message_input').val();
-        socket.emit('message', msg);
-        $('#messages')
-        .append($('<li>')
-          .addClass("conversation-line")
-          .text(msg));
-        $('#message_input').val('');
+        var msg = $("#message_input").val();
+        if (msg.trim() === "") {
+          // input field is empty, do not submit form
+          return false;
+        }
+        socket.emit("message", msg);
+        $("#messages").append(
+          $("<li>").addClass("conversation-line").text(msg)
+        );
+        $("#message_input").val("");
+
+        // scroll to bottom of conversation element
+        var conversation = $(".conversation");
+        conversation.animate({scrollTop: conversation[0].scrollHeight}, "slow");
+
         return false;
       });
-      socket.on('response', function(msg) {
-        $('#messages')
-        .append($('<li>')
-          .addClass("conversation-line")
-          .text(msg));
+      socket.on("response", function (msg) {
+        $("#messages").append(
+          $("<li>").addClass("conversation-line").text(msg)
+        );
+
+        // scroll to bottom of conversation element
+        var conversation = $(".conversation");
+        conversation.animate({scrollTop: conversation[0].scrollHeight}, "slow");
       });
     </script>
   </body>
